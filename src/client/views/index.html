@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fantom.ai</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav>
+        <h1>Fantom.ai</h1>
+      </nav>
+
+      <div class="app-content">
+        <form id="nlg-form">
+          <p>Paste your text here</p>
+          <textarea
+            type="text"
+            name="nlg-text"
+            id="nlg-text"
+            required
+          ></textarea>
+          <a class="btn submit-btn" onclick="Client.handleSubmit()"
+            >PROCEED</a>
+        </form>
+        <div class="results-viewer">
+          <div class="results hide-element hide">
+            <div class="agreement">
+              <i id="agreement-icon" class=""></i>
+              <p id="agreement-msg">agreement?</p>
+            </div>
+            <div class="confidence">
+              <div class="confidence-bar">
+                <div id="confidence-bar" class="progress-bar">
+                  <p id="confidence-stat">(100%)</p>
+                </div>
+              </div>
+              <p>confidence</p>
+            </div>
+            <div class="ironic">
+              <i id="irony-icon" class=""></i>
+              <p id="irony-msg">ironic?</p>
+            </div>
+          </div>
+          <div class="loading hide">
+            <i class="fas fa-spinner"></i>
+            <p>PROCESSING</p>
+          </div>
+        </div>
+      </div>
+      <div id="offline-msg">
+        <h1>No Internet Connection, Please Try Again.</h1>
+      </div>
+      <div id="server-down-msg">
+        <h1>Express.js is Down, Please Start it Up to Use This App.</h1>
+      </div>
+      <footer>
+        <p class="credits">a project by <span>Mohammed Abdelazem</span></p>
+      </footer>
+    </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+
+      setInterval(() => {
+        if (!navigator.onLine) {
+         document.querySelector(".app-content").style.display = 'none';
+         document.getElementById("offline-msg").style.display = 'flex';
+        } else {
+          document.querySelector(".app-content").style.display = 'flex';
+          document.getElementById("offline-msg").style.display = 'none';
+        }
+      }, 1000)
+    </script>
+  </body>
+</html>

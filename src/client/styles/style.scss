@@ -1,0 +1,229 @@
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;500&display=swap");
+
+$font-stack: "JetBrains Mono", sans-serif;
+$p-font-size: 18px;
+$h1-font-size: 28px;
+$primary-color: #7950f2;
+$secondry-color: #f3f3f3;
+$dark-color: #2d2d2d;
+$shadow: 4px 4px rgb(37, 37, 37, 0.6);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: $h1-font-size;
+  font-weight: 500;
+}
+
+p {
+  font-size: $p-font-size;
+  font-weight: 200;
+}
+
+body {
+  background-color: $primary-color;
+  color: $secondry-color;
+}
+
+nav {
+  h1 {
+    margin: 0 0 20px;
+  }
+  border-bottom: 3px solid black;
+}
+
+.container {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  font-family: $font-stack;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  form {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      height: 55vh;
+      resize: none;
+      font-family: $font-stack;
+      font-size: $p-font-size;
+      font-weight: 300;
+      background-color: $secondry-color;
+      color: $dark-color;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 0.5rem;
+      box-shadow: $shadow;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .btn {
+      width: fit-content;
+      position: relative;
+      padding: 0.7rem 1.2rem;
+      background-color: $dark-color;
+      color: $secondry-color;
+      font-family: $font-stack;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      box-shadow: $shadow;
+
+      &:hover {
+        background: #525252;
+      }
+
+      &:active {
+        animation-name: buttonPressed;
+        animation-duration: 0.1s;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+      }
+    }
+  }
+}
+
+.results-viewer {
+  width: 50%;
+  height: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: -50px;
+
+  .results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: rgb(37, 37, 37, 0.8);
+    padding: 20px 50px;
+    box-shadow: $shadow;
+    border-radius: 0.6rem;
+    width: 80%;
+    & > div {
+      margin: 10px 3%;
+    }
+  }
+
+  i {
+    font-size: 3rem;
+    margin: 10px 0;
+  }
+
+  .confidence {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .confidence-bar {
+      height: 35vh;
+      width: 75%;
+      margin: 10px 0;
+      position: relative;
+
+      .progress-bar {
+        position: absolute;
+        background-color: #a5eb78;
+        height: 100%;
+        width: 100%;
+        bottom: 1px;
+        border-radius: 16px 16px 0 0;
+
+        p {
+          position: relative;
+          top: 48%;
+          font-weight: 500;
+          color: $dark-color;
+        }
+      }
+    }
+  }
+}
+
+.loading {
+  position: absolute;
+  align-self: center;
+  justify-self: self-start;
+
+  i {
+    animation-name: spinnerAnimation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+#offline-msg {
+  display: none;
+  align-self: center;
+  margin: 30vh 0;
+}
+
+#server-down-msg {
+  display: none;
+  align-self: center;
+  margin: 30vh 0;
+}
+
+@keyframes spinnerAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes buttonPressed {
+  to {
+    transform: scale(40%);
+    background-color: #e67070;
+  }
+}
+
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+.green {
+  color: #a5eb78;
+}
+
+.red {
+  color: #e67070;
+}
+
+footer {
+  align-self: center;
+  opacity: 0.4;
+  p {
+    font-style: italic;
+  }
+  span {
+    font-weight: 500;
+  }
+}
