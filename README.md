@@ -1,7 +1,5 @@
 # Welcome to Fantom.ai
 
-Please understand it's just a made up name that means nothing... but it sounds cool though :)
-
 Fantom.ai is a simple web app that takes a block of text, analyses it, and displays the emotional stats of the analyzed text, whether it is ironic, or has confidences or a sense of agreement.
 
 
@@ -40,6 +38,6 @@ make sure your terminal current directory is at the project top directory.
 
 ## Things to Consider When Testing The Code...
 
-- ExpressJS will crash if your internet is really really slow, credits goes to my ISP for discovering this bug. I love them to DEATH.
+- ExpressJS will crash if your internet is really really slow, credits goes to my ISP for discovering this bug.
 
 - When running Jest, please be sure ExpressJS is up since some unit tests depend on it.
